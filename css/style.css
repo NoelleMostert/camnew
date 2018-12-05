@@ -1,0 +1,231 @@
+body {
+    margin:0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #000 url('../img/dark_background.jpg');
+    overflow-x: hidden;
+}
+
+.header {
+    overflow: hidden;
+    background-color: #f1f1f1;
+    padding: 20px 10px;
+}
+
+.header a {
+    float: left;
+    color: black;
+    text-align: center;
+    padding: 12px;
+    text-decoration: none;
+    font-size: 18px;
+    line-height: 25px;
+    border-radius: 4px;
+}
+
+.header a:hover {
+    background-color: #ddd;
+    color: black;
+}
+
+.header a.active {
+    background-color: dodgerblue;
+    color: white;
+}
+
+.header-right {
+    float: right;
+}
+
+.navbar {
+    background: #333;
+    padding: 15px;
+    height: 40px;
+    color: #fff;
+
+}
+
+.navbar h1 {
+    margin: 0;
+    text-align: center;
+}
+
+.top-container {
+    width: 500px;
+    margin: 30px auto;
+}
+
+.btn {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 5px;
+}
+
+.btn-dark {
+    background: #333;
+    color: #fff;
+    border: #666 1px solid;
+}
+
+.btn-light {
+    background: #f4f4f4;
+    color: #333;
+    border: #ccc 1px solid;
+}
+
+.btn-dark:hover {
+    background: #3e8e41;
+}
+
+.btn-light:hover {
+    background: #3e8e41;
+}
+
+.select {
+    height: 40px;
+    background: #333;
+    color: #fff;
+    padding: 3px;
+    width: 100%;
+    border: 1px #666 solid;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.bottom-container {
+    max-width: 960px;
+    margin: auto;
+    padding: 10px;
+}
+
+#photos {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 10px;
+}
+
+#photos img {
+    width: 100%;
+    border: 3px #fff solid;
+    transform: rotateY(180deg);
+    -webkit-transform:rotateY(180deg); /* Safari and Chrome */
+    -moz-transform:rotateY(180deg); /* Firefox */
+}
+
+
+.contained
+{
+    position: relative;
+    width: 500px;
+    height: 375px;
+}
+
+.overlays
+{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    /*width: 100%;*/
+    /*height: 100%;*/
+    width: 500px;
+    height: 375px;
+}
+
+
+.overlays img
+{
+    width: 50%;
+    height: 50%;
+    transform: rotateY(180deg);
+    -webkit-transform:rotateY(180deg); /* Safari and Chrome */
+    -moz-transform:rotateY(180deg); /* Firefox */
+}
+
+.overlays .overlay {
+    position: absolute;
+    left: 0;
+    top: 15%;
+}
+
+#canvas {
+    display: none;
+}
+
+.footer {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    padding: 1rem;
+    background-color: #efefef;
+    text-align: center;
+}
+
+/*testing the button upload function*/
+
+
+.upload-btn-wrapper {
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+}
+
+.upload-btn-wrapper input[type=file] {
+    font-size: 100px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0;
+}
+
+#video {
+    width: 500px;
+    height: 375px;
+    background-color: #666;
+    transform: rotateY(180deg);
+    -webkit-transform:rotateY(180deg); /* Safari and Chrome */
+    -moz-transform:rotateY(180deg); /* Firefox */
+}
+
+/* testing the form button */
+
+.super{
+    display: block;
+    margin-top: 15px;
+    width: 100%;
+    padding: 15px 0 15px 0;
+
+    transform: rotateY(180deg);
+    -webkit-transform:rotateY(180deg); /* Safari and Chrome */
+    -moz-transform:rotateY(180deg); /* Firefox */
+}
+
+.super table{
+    display: flex;
+    width: 75%;
+    background: #eee;
+    padding: 10px 0 10px 0;
+
+    overflow: auto;
+}
+
+.super table tr{
+    display: inline-flex;
+    height: 100%;
+}
+
+.super table tr td{
+    border: 1px solid #ddd;
+    display: block;
+    height: 100%;
+    margin-right: 10px;
+}
+
+.super table tr img{
+    display: block;
+    height: 175px;
+    width: auto;
+}
