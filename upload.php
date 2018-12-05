@@ -1,5 +1,10 @@
 <?php
+
+if(!isset($_SESSION))
+	session_start();
 require_once 'core/init.php';
+
+$pdo = DB::getconnection();
 
 if(isset($_POST["images"]))
 {
@@ -8,53 +13,45 @@ if(isset($_POST["images"]))
 	$full_thing = imagecreatetruecolor(500, 375);
 	imagealphablending($full_thing, true);
 	imagesavealpha($full_thing,true);
+	
 	$full_h = imagesx($full_thing);
 	$full_w = imagesy($full_thing);
+	$original = $full_w/$full_h;
 
+	$fail = false;
+
+	foreach($all as $key => $value)
+	{
+		$data = explode(",", $value, 2);
+		$new = base64_decode($data[1]);
+		$img = imagecreatefromstring($new);
+
+		if ($img !== false)
+		{
+			imagealphablending($img, true);
+			imagesavealpha($img, true);
+			$h = imagesx($img);
+			$w = imagesy($img);
+			if($w/$h > $original)
+				$w = $h*$original;
+			else
+				$h = $w/$original;
+			$img = imagescale($img, $fw, -1);
+			imagecopy($full_thing, $img, 0, 0, 0, 0, $w, imagesy($img));
+		}
+		else
+			$fail;
+	}
+	try{
+
+	}
+	catch(\PDOException $e){
+		echo $e->getMessage;
+	}
 }
-
-// load the frame image (png with 8-bit transparency) 
-$frame = imagecreatefrompng('path/to/frame.png'); 
-
-// load the thumbnail image 
-$thumb = imagecreatefromjpeg('path/to/thumbnail.jpg'); 
-
-// get the dimensions of the frame, which we'll also be using for the 
-// composited final image. 
-$width = imagesx( $frame ); 
-$height = imagesy( $frame ); 
-
-// create the destination/output image. 
-$img=imagecreatetruecolor( $width, $height ); 
-
-// enable alpha blending on the destination image. 
-imagealphablending($img, true); 
-
-// Allocate a transparent color and fill the new image with it. 
-// Without this the image will have a black background instead of being transparent. 
-$transparent = imagecolorallocatealpha( $img, 0, 0, 0, 127 ); 
-imagefill( $img, 0, 0, $transparent ); 
-
-// copy the thumbnail into the output image. 
-imagecopyresampled($img,$thumb,32,30,0,0, 130, 100, imagesx( $thumb ), imagesy( $thumb ) ); 
-
-// copy the frame into the output image (layered on top of the thumbnail) 
-imagecopyresampled($img,$frame,0,0,0,0, $width,$height,$width,$height); 
-
-imagealphablending($img, false); 
-
-// save the alpha 
-imagesavealpha($img,true); 
-
-// emit the image 
-header('Content-type: image/png'); 
-imagepng( $img ); 
-
-// dispose 
-imagedestroy($img); 
-
-// done. 
-exit;
+else{
+	echo "Failure: Invalid method or file";
+}
 
 $arr =  json_decode($_POST["images"]);
 $arr = str

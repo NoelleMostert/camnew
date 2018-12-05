@@ -16,6 +16,7 @@
 
     <title>InnuendO</title>
     <link rel="stylesheet" type="text/css" href="css/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 </div>
 <?php if($user->isLoggedIn()){ ?>
@@ -125,6 +126,9 @@
 
 <div class="bottom-container">
     <div id="photos"></div>
+    <button id="addtogallery-button" class="btn btn-light">
+        Add all images to gallery
+    </button>
 </div>
 
 <script src="js/main.js"></script>
@@ -135,9 +139,9 @@ else{
     echo '<p> You need to <a href="login.php">log in</a> or <a href="register.php">register</a></p>';
 }
 ?>
+<!--</div> -->
 <div class="footer">
     © 2018 tbenedic Benedict Builds
-</div>
 </div>
 </body>
 </html>
